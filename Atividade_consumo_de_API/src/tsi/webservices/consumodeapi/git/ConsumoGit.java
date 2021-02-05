@@ -81,7 +81,7 @@ public class ConsumoGit {
 		if(!dados.containsKey(chave)) {
 			url = new URL(chave);
 			connection = url.openConnection();
-			try(BufferedReader entrada = new BufferedReader(new InputStreamReader(connection.getInputStream()))){
+			try(BufferedReader entrada = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"))){
 				
 				if(chave.contains("repos") || chave.contains("followers")) 
 					dados.put(chave, gson.fromJson(entrada, new TypeToken<List<Map<Object, Object>>>() {}.getType()));					
